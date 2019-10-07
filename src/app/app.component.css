@@ -1,0 +1,44 @@
+h1, h3, h4 {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.buttons{
+    margin-left: 30px;
+}
+
+.btn-lmc{
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+#left-row{
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+#controls{
+    margin-top: 10px;
+}
+
+hr{
+    border-top: 1px solid #ccc;
+}
+
+@media (min-width: 992px){
+.col-md-1 {
+    width: 13%;
+}
+}
+
+
+
+@media (min-width: 768px){
+
+body, .modal-body, .btn{
+    font-size: 16px;
+}
+
+.modal.in .modal-dialog {
+    width: 40%;
+}
+}

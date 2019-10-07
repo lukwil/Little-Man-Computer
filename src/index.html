@@ -2,13 +2,40 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Project</title>
-  <base href="/">
+  <title>Little Man Computer</title>
+  <!--<base href="/">-->
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+  
+  <app-root>Loading... <br> 
+  <noscript>
+  Bitte JavaScript im Browser aktivieren!
+  </noscript>
+
+  <!-- [if IE]
+  Test -->
+  <style>
+  #displayIE{
+    display: none !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+   
+   #displayIE {
+       display: block !important;
+   }
+
+}
+  </style>
+<p id="displayIE">Bitte einen anderen Browser als den Internet Explorer benutzen!</p>
+
+  </app-root>
 </body>
 </html>

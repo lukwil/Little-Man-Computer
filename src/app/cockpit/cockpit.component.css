@@ -1,0 +1,30 @@
+.h1, .h4,
+h1, h4 {
+    font-weight: 600;
+}
+
+.alignCenter{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input#inp-ac {
+    margin-bottom: 10px;
+}
+
+textarea#ta-program, textarea#ta-input, textarea#ta-output, 
+input#inp-pc, input#inp-ac {
+    width: 100% !important;
+    resize: none;
+}
+
+textarea#lineCounter{
+    border: none;
+    width: 30px;
+    text-align: right;
+    resize: none;
+}
+
+h4#programHeading{
+    margin-left: 15px;
+}

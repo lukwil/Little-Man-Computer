@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body, .btn-lmc, .h1, .h4, h1, h4 {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+

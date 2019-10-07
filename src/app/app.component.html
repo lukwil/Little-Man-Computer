@@ -1,3 +1,154 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+    <h1>Little Man Computer
+        <button type="button" class="btn btn-success" aria-hidden="true" data-toggle="modal" data-target="#myModal"> 
+  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Anleitung
+</button>
+    </h1>
+
+
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Anleitung</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>1. Instruction Set</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Instruction</th>
+                                    <th>Numeric Code *</th>
+                                </tr>
+                                <tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ADD</td>
+                                    <td>1xx</td>
+                                </tr>
+                                <tr>
+                                    <td>SUBTRACT</td>
+                                    <td>2xx</td>
+                                </tr>
+                                <tr>
+                                    <td>STORE</td>
+                                    <td>3xx</td>
+                                </tr>
+                                <tr>
+                                    <td>LOAD</td>
+                                    <td>5xx</td>
+                                </tr>
+                                <tr>
+                                    <td>BRANCH (UNCONDITIONAL)</td>
+                                    <td>6xx</td>
+                                </tr>
+                                <tr>
+                                    <td>BRANCH IF ZERO</td>
+                                    <td>7xx</td>
+                                </tr>
+                                <tr>
+                                    <td>BRANCH IF ZERO OR POSITIVE</td>
+                                    <td>8xx</td>
+                                </tr>
+                                <tr>
+                                    <td>INPUT</td>
+                                    <td>901</td>
+                                </tr>
+                                <tr>
+                                    <td>OUTPUT</td>
+                                    <td>902</td>
+                                </tr>
+                                <tr>
+                                    <td>HALT</td>
+                                    <td>000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    * xx ist durch die gewünschte Mailbox zu ersetzen
+                    <br><br>
+
+                    <h3>2. Code-Eingabe</h3>
+                    Der Programcode ist in das entsprechende Textfeld oben rechts einzutragen. <br>
+                    Um direkt Werte auf die Speicherstellen zu speichern, werden runde Klammern verwendet.
+                    Um so beipielsweise 50 in Speicherstele 90 zu laden schreibt man: 
+                    <code>(90) 50</code>
+                    <br><br>
+
+                    <h3>3. Ausführen eines Programms</h3>
+                    Um den zuvor in das Textfeld eingetragenen Code auszuführen, muss das Programm erst in den Speicher geladen werden.
+                    Dazu muss der Button <code>Assemble</code> gedrückt werden. Anschließend wird das Programm auf eine korrekte Syntax überprüft und es wird auf eventuell auftretende Fehler hingewiesen.
+                    Nun kann der Code mittels <code>Run</code> am Stück, oder mittels <code>Step</code> Schritt für Schritt ausgeführt werden. <br>
+                    Während der Laufzeit kann außerdem jederzeit der Accumulator "manipuliert" werden. <br>
+                    Um den Accumulator, den Program Counter und die Outputs zurückzusetzen, kann man <code>Reset</code> drücken. Vor jedem <code>Run</code> geschieht dies automatisch. <br>
+                    Um auch die Speicherplätze zu leeren, kann von <code>Reset RAM</code> Gebrauch gemacht werden.
+                    <br><br>
+
+                    <h3>4. Lesen aus einer Datei</h3>
+                    Der Programmcode für den Little Man Computer kann nicht nur von Hand eingegeben, sondern auch aus einer Datei eingelesen werden.
+                    Dafür wählt man den Button <code>File Input</code> und lädt mit <code>Load</code> den Inhalt der Datei in den LMC. <br>
+                    Die Dateien benötigen immer die Dateiendung .lmc, andernfalls werden können sie nicht eingelesen werden!
+                    <br><br>
+
+                    <hr id="#blackHR">
+                    Dieser Little Man Computer entstand im Sommersemester 2017 im Rahmen einer studentischen Hilfstätigkeit bei Prof. Dr. Rafael Mayoral Malmström. <br>
+                    Zur Umsetzung wurde von OpenSource-Tools Gebrauch gemacht. 
+                    Dies umfasst zum einen das JavaScript-Frontend-Framework <a target="blank" href="https://angular.io/">Angular</a> in Version 4 von Google und zum anderen <a target="blank" href="https://www.typescriptlang.org/">TypeScript</a> in Version 2.2.0 von Microsoft.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Schließen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" id="left-row">
+        <div class="col-sm-3">
+            <app-cockpit (onError)="displayError($event)"></app-cockpit>
+        </div>
+
+        <div class="col-sm-9">
+            <app-mailbox-element *ngFor="let mbx of mailboxes; let i = index" [mailbox]="mbx" [id]="i">
+            </app-mailbox-element>
+        </div>
+
+    </div>
+
+    <div class="row" id="controls">
+        <div class=" col-md-1">
+            <h4>Controls</h4>
+        </div>
+        <div class="col-md-1">
+            <button type="button" (click)="assembleToRAM()" class="btn btn-default btn-lmc">Assemble</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" (click)="run()" class="btn btn-default btn-lmc">Run</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" (click)="step()" class="btn btn-default btn-lmc">Step</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" (click)="resetButton()" class="btn btn-default btn-lmc">Reset</button>
+        </div>
+
+        <div class="col-md-1">
+            <button type="button" (click)="cleanMailboxes()" class="btn btn-default btn-lmc">Reset RAM</button>
+        </div>
+
+        <div class="col-md-1">
+            <label class="btn btn-default btn-lmc">
+         File Input <input type="file" (change)="fileUpload($event)" accept=".lmc" style="display: none;">
+        </label>
+
+        </div>
+
+        <div class="col-sm-1 col-xs-12">
+            <button type="button" [disabled]="!showLoadButton" (click)="processData(); showLoadButton=!showLoadButton" class="btn btn-primary">Load</button>
+        </div>
+
+    </div>

@@ -1,0 +1,6 @@
+<div class="col-sm-3 col-md-2 col-xs-6">
+  <div class="input-group input-group-sm">
+    <span [ngClass]="{'active-class':getActiveStatus()}" class="input-group-addon">{{ this.id }}</span>
+    <input type="number" class="form-control" [ngClass]="{'active-class':getActiveStatus()}" [(ngModel)]="this.mailbox.value">
+  </div>
+</div>

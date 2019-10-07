@@ -1,0 +1,33 @@
+<div class="row">
+    <h4 id="programHeading">Program</h4>
+
+    <div class="col-sm-2 col-xs-2">
+        <p class="alignCenter">Line</p>
+        <textarea dir="rtl" [ngStyle]="{'height.px': heightProgram}" id="lineCounter" [(ngModel)]="lineNumbers" readonly></textarea>
+    </div>
+    <div class="col-sm-10 col-xs-10">
+        <p class="alignCenter">Code</p>
+        <textarea [ngStyle]="{'height.px': heightProgram}" type="text" id="ta-program" [(ngModel)]="programValues" (ngModelChange)="addLineNumbers();scroll()"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <h4>Inputs</h4>
+        <textarea [ngStyle]="{'height.px': heightInOut}" type="text" id="ta-input" [(ngModel)]="inputValues"></textarea>
+    </div>
+    <div class="col-sm-6">
+        <h4>Outputs</h4>
+        <textarea [ngStyle]="{'height.px': heightInOut}" type="text" id="ta-output" [(ngModel)]="outputValues"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h4>PC</h4>
+        <input [(ngModel)]="pc" type="number" id="inp-pc">
+    </div>
+    <div class="col-sm-6">
+        <h4>Accumulator</h4>
+        <input [(ngModel)]="acc" (ngModelChange)="onChangeACC($event)" type="number" id="inp-ac">
+    </div>
+</div>
