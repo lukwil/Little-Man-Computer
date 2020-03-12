@@ -25,7 +25,7 @@ jobs:
     - run: npm install
 
     - name: Build
-      run: npm run build -- --prod
+      run: npm run build -- --env=prod
     
     - name: Deploy to GH pages 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
