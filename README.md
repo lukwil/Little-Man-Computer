@@ -1,4 +1,4 @@
-# Project
+# Little Man Computer
 
 See the project result [here](https://lukwil.github.io/Little-Man-Computer/)!
 
